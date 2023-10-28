@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jens
+      changes:
+        - createTable:
+            tableName: credit
+            columns:
+              - column:
+                  name: type
+                  type: varchar(255)
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
