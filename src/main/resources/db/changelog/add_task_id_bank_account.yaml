@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_task_ID
+      author: jensitus
+      changes:
+        - addColumn:
+            tableName: bankaccount
+            columns:
+              - column:
+                  name: confirm_account_task_id
+                  type: varchar(128)

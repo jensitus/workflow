@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_task_id_task
+      author: jensitus
+      changes:
+        - addColumn:
+            tableName: tasks
+            columns:
+              - column:
+                  name: task_id
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: aggregate_id
+                  type: varchar(128)

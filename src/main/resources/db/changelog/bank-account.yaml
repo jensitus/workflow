@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-bankaccount
+      author: jensitus
+      changes:
+        - createTable:
+            tableName: bankaccount
+            columns:
+              - column:
+                  name: id
+                  type: varchar(128)
+                  constraints:
+                    primaryKey: true
+                    unique: true
+              - column:
+                  name: type
+                  type: varchar(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: customer
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

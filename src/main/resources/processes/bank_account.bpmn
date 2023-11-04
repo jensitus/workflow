@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ul5gwr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0">
+  <bpmn:process id="BankAccountWorkflow" name="Bank Account Workflow" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1klt7cl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_030iv6j">
+      <bpmn:incoming>Flow_0r75ndv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1klt7cl" sourceRef="StartEvent_1" targetRef="manual_account" />
+    <bpmn:sequenceFlow id="Flow_015w7gy" sourceRef="manual_account" targetRef="confirm_account" />
+    <bpmn:manualTask id="manual_account" name="Manual Account">
+      <bpmn:incoming>Flow_1klt7cl</bpmn:incoming>
+      <bpmn:outgoing>Flow_015w7gy</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:sequenceFlow id="Flow_1nqauvh" sourceRef="confirm_account" targetRef="set_account" />
+    <bpmn:userTask id="confirm_account" name="confirm Account">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="confirm_account" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_015w7gy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nqauvh</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0r75ndv" sourceRef="set_account" targetRef="Event_030iv6j" />
+    <bpmn:userTask id="set_account" name="set account">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="set_account_form_key" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1nqauvh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r75ndv</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BankAccountWorkflow">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wknoma_di" bpmnElement="manual_account">
+        <dc:Bounds x="350" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0d85ye8_di" bpmnElement="confirm_account">
+        <dc:Bounds x="530" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_030iv6j_di" bpmnElement="Event_030iv6j">
+        <dc:Bounds x="882" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xn65l0_di" bpmnElement="set_account">
+        <dc:Bounds x="660" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1klt7cl_di" bpmnElement="Flow_1klt7cl">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="350" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_015w7gy_di" bpmnElement="Flow_015w7gy">
+        <di:waypoint x="450" y="117" />
+        <di:waypoint x="530" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nqauvh_di" bpmnElement="Flow_1nqauvh">
+        <di:waypoint x="630" y="117" />
+        <di:waypoint x="660" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r75ndv_di" bpmnElement="Flow_0r75ndv">
+        <di:waypoint x="760" y="117" />
+        <di:waypoint x="882" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

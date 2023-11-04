@@ -1,4 +1,12 @@
 databaseChangeLog:
   - include:
       file: /db/changelog/create-table-credit.yaml
+  - include:
+      file: /db/changelog/initial_setup.yaml
+  - include:
+      file: /db/changelog/bank-account.yaml
+  - include:
+      file: /db/changelog/task-list.yaml
+  - include:
+      file: /db/changelog/add_task_id_bank_account.yaml
 

@@ -1,16 +1,16 @@
 package at.phactum.Workflow;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.context.annotation.Bean;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.test.context.TestConfiguration;
+//import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+//import org.springframework.context.annotation.Bean;
+//import org.testcontainers.containers.PostgreSQLContainer;
+//import org.testcontainers.utility.DockerImageName;
 
-@TestConfiguration(proxyBeanMethods = false)
+// @TestConfiguration(proxyBeanMethods = false)
 public class TestWorkflowApplication {
 
-	@Bean
+/*	@Bean
 	@ServiceConnection
 	PostgreSQLContainer<?> postgresContainer() {
 		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
@@ -18,6 +18,6 @@ public class TestWorkflowApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.from(WorkflowApplication::main).with(TestWorkflowApplication.class).run(args);
-	}
+	}*/
 
 }

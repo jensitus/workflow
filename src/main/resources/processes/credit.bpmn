@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1gqs4gn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0">
+  <bpmn:process id="CreditWorkflow" name="credit workflow" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1o3e762</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0qt5pgv">
+      <bpmn:incoming>Flow_0pcqiiv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0pcqiiv" sourceRef="Activity_15dvp59" targetRef="Event_0qt5pgv" />
+    <bpmn:sequenceFlow id="Flow_1o3e762" sourceRef="StartEvent_1" targetRef="grant_credit" />
+    <bpmn:sequenceFlow id="Flow_0h2u2oq" sourceRef="grant_credit" targetRef="Activity_15dvp59" />
+    <bpmn:serviceTask id="grant_credit" name="grant credit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="grantCredit" retries="2" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1o3e762</bpmn:incoming>
+      <bpmn:outgoing>Flow_0h2u2oq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:manualTask id="Activity_15dvp59" name="manual">
+      <bpmn:incoming>Flow_0h2u2oq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pcqiiv</bpmn:outgoing>
+    </bpmn:manualTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CreditWorkflow">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qt5pgv_di" bpmnElement="Event_0qt5pgv">
+        <dc:Bounds x="792" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rbbiaq_di" bpmnElement="grant_credit">
+        <dc:Bounds x="340" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0572rv8_di" bpmnElement="Activity_15dvp59">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0pcqiiv_di" bpmnElement="Flow_0pcqiiv">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="792" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o3e762_di" bpmnElement="Flow_1o3e762">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="340" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0h2u2oq_di" bpmnElement="Flow_0h2u2oq">
+        <di:waypoint x="440" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

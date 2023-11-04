@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: task-list
+      author: jensitus
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: varchar(128)
+                  constraints:
+                    primaryKey: true
+                    unique: true
+              - column:
+                  name: element_id
+                  type: varchar(128)
+              - column:
+                  name: bpmn_process_id
+                  type: varchar(128)
+              - column:
+                  name: process_instance_key
+                  type: bigint
+              - column:
+                  name: element_instance_key
+                  type: bigint
