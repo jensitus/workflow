@@ -9,6 +9,7 @@ databaseChangeLog:
               - column:
                   name: task_id
                   type: varchar(64)
+                  defaultValue: "123"
                   constraints:
                     nullable: false
               - column:

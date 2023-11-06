@@ -18,4 +18,9 @@ public class BankAccontController {
         bankAccountWorkflow.requestBankAccount(type, customer);
     }
 
+    @GetMapping("/{bankAccountId}/complete-task/{task_id}")
+    public void completeTask(@PathVariable("bankAccountId") String bankAccountId, @PathVariable("task_id") String taskId) {
+        bankAccountWorkflow.completeTask(bankAccountId, taskId);
+    }
+
 }

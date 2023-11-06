@@ -34,4 +34,12 @@ public class Task {
     @Column(name = "aggregate_id")
     private String aggregateId;
 
+    @Column(name = "status")
+    private String status;
+
+    public enum Status {
+        OPEN,
+        COMPLETED
+    }
+
 }

@@ -13,6 +13,7 @@ public class TaskService {
         Task task = new Task();
         task.setTaskId(taskId);
         task.setAggregateId(aggregateId);
+        task.setStatus(Task.Status.OPEN.toString());
         return taskRepository.save(task);
     }
     public void createTask(TaskDto taskDto, String taskId) {
@@ -22,6 +23,10 @@ public class TaskService {
         task.setProcessInstanceKey(taskDto.getProcessInstanceKey());
         task.setElementInstanceKey(taskDto.getElementInstanceKey());
         taskRepository.save(task);
+    }
+
+    public void updateStatus(String taskId, String status) {
+        taskRepository.updateStatus(status, taskId);
     }
 
 }

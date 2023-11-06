@@ -9,4 +9,8 @@ databaseChangeLog:
       file: /db/changelog/task-list.yaml
   - include:
       file: /db/changelog/add_task_id_bank_account.yaml
+  - include:
+      file: /db/changelog/add_task_id_to_task.yaml
+  - include:
+      file: /db/changelog/add_status_to_task.yaml
 

@@ -13,4 +13,5 @@ public class TaskDto {
     private Long processDefinitionKey;
     private String taskId;
     private String aggregateId;
+    private String status;
 }
