@@ -1,4 +1,4 @@
-package at.phactum.Workflow.account;
+package at.phactum.workflow.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,7 +1,8 @@
-package at.phactum.Workflow.account;
+package at.phactum.workflow.account;
 
-import at.phactum.Workflow.task.Task;
-import at.phactum.Workflow.task.TaskService;
+import at.phactum.workflow.cockpit.UserTaskEvent;
+import at.phactum.workflow.task.Task;
+import at.phactum.workflow.task.TaskService;
 import io.vanillabp.spi.process.ProcessService;
 import io.vanillabp.spi.service.TaskId;
 import io.vanillabp.spi.service.WorkflowService;
@@ -37,8 +38,13 @@ public class BankAccountWorkflow {
     public void confirmAccount(final BankAccount bankAccount, final @TaskId String taskId) {
         log.info("confirm_account: {}", bankAccount);
         log.info("taskId: {}", taskId);
-        Task task = taskService.createTask(taskId, bankAccount.getId());
-
+        // Task task = taskService.createTask(taskId, bankAccount.getId());
+        UserTaskEvent userTaskEvent = new UserTaskEvent();
+        userTaskEvent.setBpmnTaskId("confirm_account");
+        userTaskEvent.setTaskDefinition("confirm_account");
+        userTaskEvent.setUserTaskId(taskId);
+        userTaskEvent.setBpmnProcessId("confirm_account");
+        taskService.sendTaskToBusinessCockpit(userTaskEvent);
     }
 
     @WorkflowTask(taskDefinition = "set_account_form_key")
@@ -51,7 +57,7 @@ public class BankAccountWorkflow {
         if (bankAccountOptional.isPresent()) {
             taskService.updateStatus(taskId, Task.Status.COMPLETED.name());
             bankAccountProcessService.completeUserTask(bankAccountOptional.get(), taskId);
-        };
+        }
 
     }
 

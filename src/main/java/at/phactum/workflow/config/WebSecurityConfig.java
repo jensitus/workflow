@@ -1,4 +1,4 @@
-package at.phactum.Workflow.config;
+package at.phactum.workflow.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

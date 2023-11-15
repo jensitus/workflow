@@ -1,4 +1,4 @@
-package at.phactum.Workflow;
+package at.phactum.workflow;
 
 //import at.phactum.Workflow.credit.CreditAggregate;
 //import io.vanillabp.spi.process.ProcessService;

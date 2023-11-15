@@ -1,11 +1,10 @@
-package at.phactum.Workflow.account;
+package at.phactum.workflow.account;
 
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "bankaccount")

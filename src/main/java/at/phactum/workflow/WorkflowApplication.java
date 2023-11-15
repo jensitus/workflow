@@ -1,4 +1,4 @@
-package at.phactum.Workflow;
+package at.phactum.workflow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

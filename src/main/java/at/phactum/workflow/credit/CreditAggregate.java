@@ -1,4 +1,4 @@
-package at.phactum.Workflow.credit;
+package at.phactum.workflow.credit;
 
 import javax.persistence.*;
 

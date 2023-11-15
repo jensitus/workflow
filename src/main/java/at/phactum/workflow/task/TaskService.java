@@ -1,7 +1,9 @@
-package at.phactum.Workflow.task;
+package at.phactum.workflow.task;
 
+import at.phactum.workflow.cockpit.UserTaskEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class TaskService {
@@ -22,7 +24,14 @@ public class TaskService {
         task.setBpmnProcessId(taskDto.getBpmnProcessId());
         task.setProcessInstanceKey(taskDto.getProcessInstanceKey());
         task.setElementInstanceKey(taskDto.getElementInstanceKey());
-        taskRepository.save(task);
+        // taskRepository.save(task);
+
+        // create UserTaskEvent and send it to the BusinessCockpit
+    }
+
+    public void sendTaskToBusinessCockpit(UserTaskEvent userTaskEvent) {
+        RestTemplate restTemplate = new RestTemplate();
+        final String s = restTemplate.postForObject("http://localhost:9080/simple/usertask/created", userTaskEvent, String.class);
     }
 
     public void updateStatus(String taskId, String status) {

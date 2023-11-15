@@ -1,4 +1,4 @@
-package at.phactum.Workflow.account;
+package at.phactum.workflow.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

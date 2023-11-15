@@ -1,4 +1,4 @@
-package at.phactum.Workflow.task;
+package at.phactum.workflow.task;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
